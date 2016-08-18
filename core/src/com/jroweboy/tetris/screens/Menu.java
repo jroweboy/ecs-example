@@ -1,4 +1,6 @@
 package com.jroweboy.tetris.screens;
 
-public class Menu {
+import com.badlogic.gdx.ScreenAdapter;
+
+public class Menu extends ScreenAdapter {
 }

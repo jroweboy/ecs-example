@@ -2,6 +2,7 @@ package com.jroweboy.tetris.entities;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.MathUtils;
+import com.jroweboy.tetris.components.StateComponent;
 import com.jroweboy.tetris.components.TetrominoComponent;
 
 public class Tetrominos {
@@ -34,6 +35,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.I;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
     public static Entity createO() {
@@ -41,6 +46,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.O;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
     public static Entity createT() {
@@ -48,6 +57,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.T;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
     public static Entity createS() {
@@ -55,6 +68,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.S;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
     public static Entity createZ() {
@@ -62,6 +79,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.Z;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
     public static Entity createJ() {
@@ -69,6 +90,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.J;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
     public static Entity createL() {
@@ -76,6 +101,10 @@ public class Tetrominos {
         TetrominoComponent t = new TetrominoComponent();
         t.shape = Tetromino.L;
         e.add(t);
+
+        StateComponent s = new StateComponent();
+        s.state = StateComponent.TetrominoState.QUEUE;
+        e.add(s);
         return e;
     }
 }

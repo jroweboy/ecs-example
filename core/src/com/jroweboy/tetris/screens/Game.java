@@ -29,4 +29,10 @@ public class Game extends ScreenAdapter {
     private void update(float delta) {
         engine.update(delta);
     }
+
+    @Override
+    public void render (float delta) {
+        update(delta);
+//        draw();
+    }
 }
