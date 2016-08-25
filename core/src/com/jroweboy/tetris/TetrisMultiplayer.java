@@ -35,15 +35,28 @@ public class TetrisMultiplayer extends Game {
 	public void create () {
         currentScreen = new Stack<Screen>();
         manager = new AssetManager();
-
+        loadAssets();
         setScreen(new TetrisGame(manager));
 	}
 
+	private void loadAssets() {
+        manager.load("I.png", Texture.class);
+        manager.load("J.png", Texture.class);
+        manager.load("L.png", Texture.class);
+        manager.load("O.png", Texture.class);
+        manager.load("S.png", Texture.class);
+        manager.load("T.png", Texture.class);
+        manager.load("Z.png", Texture.class);
+        manager.finishLoading();
+    }
+
 	@Override
 	public void render () {
+	    super.render();
 	}
 	
 	@Override
 	public void dispose () {
+	    super.dispose();
 	}
 }
