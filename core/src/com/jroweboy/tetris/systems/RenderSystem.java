@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.jroweboy.tetris.components.TextureComponent;
@@ -18,31 +17,15 @@ import com.jroweboy.tetris.components.TransformComponent;
 
 import java.util.Comparator;
 
-import static com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT;
-
 public class RenderSystem extends IteratingSystem {
-    private static final float PPM = 16.0f;
-    public static final float PIXELS_TO_METERS = 1.0f / PPM;
+    private static final float PPB = 16.0f;
+    public static final float PIXEL_TO_BLOCK = 1.0f / PPB;
 
-    private static final float FRUSTUM_WIDTH = Gdx.graphics.getWidth() * PIXELS_TO_METERS;
-    private static final float FRUSTUM_HEIGHT = Gdx.graphics.getHeight() * PIXELS_TO_METERS;
+    private static final float FRUSTUM_WIDTH = Gdx.graphics.getWidth() * PIXEL_TO_BLOCK;
+    private static final float FRUSTUM_HEIGHT = Gdx.graphics.getHeight() * PIXEL_TO_BLOCK;
 
-
-    private static Vector2 meterDimensions = new Vector2();
-    private static Vector2 pixelDimensions = new Vector2();
-    public static Vector2 getScreenSizeInMeters(){
-        meterDimensions.set(Gdx.graphics.getWidth()*PIXELS_TO_METERS,
-                Gdx.graphics.getHeight()*PIXELS_TO_METERS);
-        return meterDimensions;
-    }
-
-    public static Vector2 getScreenSizeInPixesl(){
-        pixelDimensions.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        return pixelDimensions;
-    }
-
-    public static float PixelsToMeters(float pixelValue){
-        return pixelValue * PIXELS_TO_METERS;
+    public static float PixelToBlock(float pixelValue){
+        return pixelValue * PIXEL_TO_BLOCK;
     }
 
     private SpriteBatch batch;
@@ -106,7 +89,7 @@ public class RenderSystem extends IteratingSystem {
                     tr.pos.x - originX, tr.pos.y - originY,
                     originX, originY,
                     width, height,
-                    PixelsToMeters(tr.scale.x), PixelsToMeters(tr.scale.y),
+                    PixelToBlock(tr.scale.x), PixelToBlock(tr.scale.y),
                     MathUtils.radiansToDegrees * tr.rotation,
                     0, 0, width, height, false, false
             );
@@ -114,8 +97,6 @@ public class RenderSystem extends IteratingSystem {
 
         batch.end();
         renderQueue.clear();
-        Gdx.app.log("Renderer","getScreenSizeInMeters: " + getScreenSizeInMeters());
-        Gdx.app.log("Renderer","getScreenSizeInPixesl: " + getScreenSizeInPixesl());
     }
 
     @Override
@@ -126,4 +107,17 @@ public class RenderSystem extends IteratingSystem {
     public void resize(int width, int height) {
         viewport.update(width, height);
     }
+
+//    private static Vector2 meterDimensions = new Vector2();
+//    private static Vector2 pixelDimensions = new Vector2();
+//    public static Vector2 getScreenSizeInMeters(){
+//        meterDimensions.set(Gdx.graphics.getWidth()*PIXEL_TO_BLOCK,
+//                Gdx.graphics.getHeight()*PIXEL_TO_BLOCK);
+//        return meterDimensions;
+//    }
+//
+//    public static Vector2 getScreenSizeInPixesl(){
+//        pixelDimensions.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//        return pixelDimensions;
+//    }
 }

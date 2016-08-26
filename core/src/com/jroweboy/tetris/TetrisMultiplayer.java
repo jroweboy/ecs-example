@@ -33,6 +33,7 @@ public class TetrisMultiplayer extends Game {
 	
 	@Override
 	public void create () {
+
         currentScreen = new Stack<Screen>();
         manager = new AssetManager();
         loadAssets();

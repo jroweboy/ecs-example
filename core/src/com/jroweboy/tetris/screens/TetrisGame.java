@@ -6,12 +6,10 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
+import com.jroweboy.tetris.components.InputComponent;
 import com.jroweboy.tetris.components.TransformComponent;
 import com.jroweboy.tetris.entities.Tetrominos;
-import com.jroweboy.tetris.systems.AnimationSystem;
-import com.jroweboy.tetris.systems.InputSystem;
-import com.jroweboy.tetris.systems.NetworkSystem;
-import com.jroweboy.tetris.systems.RenderSystem;
+import com.jroweboy.tetris.systems.*;
 
 public class TetrisGame extends ScreenAdapter {
 
@@ -34,6 +32,7 @@ public class TetrisGame extends ScreenAdapter {
         engine.addSystem(new AnimationSystem());
         engine.addSystem(new InputSystem());
         engine.addSystem(new NetworkSystem());
+        engine.addSystem(new GravitySystem(1f));
         renderSystem = new RenderSystem(spriteBatch);
         engine.addSystem(renderSystem);
 
@@ -41,6 +40,8 @@ public class TetrisGame extends ScreenAdapter {
         TransformComponent t = new TransformComponent();
         t.pos.set(0,0,1);
         e.add(t);
+        InputComponent i = new InputComponent();
+        e.add(i);
         engine.addEntity(e);
     }
 
